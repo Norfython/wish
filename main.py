@@ -1,39 +1,55 @@
 import streamlit as st
-from PIL import Image
-import requests
-from io import BytesIO
+import time
 
-# Tải hình ảnh gà và hoa
-chicken_url = "chick.jpg"
-flower_url = "bouquet.jpg"
+# Thiết lập trang
+st.set_page_config(page_title="Code thâu đêm", page_icon="🌙", layout="centered")
 
-chicken_img = Image.open(chicken_url)
-flower_img = Image.open(flower_url)
-
-# Cấu hình giao diện
-st.set_page_config(page_title="Chúc mừng 8/3", page_icon="🌸")
+# CSS dễ thương
+st.markdown("""
+    <style>
+        body {
+            background-color: #fff0f5;
+        }
+        .cute-text {
+            font-size: 32px;
+            color: #ff69b4;
+            font-family: "Comic Sans MS", cursive, sans-serif;
+            text-align: center;
+            animation: fadeIn 2s ease-in-out;
+        }
+        .image-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+        }
+        img {
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(255, 105, 180, 0.5);
+            max-width: 300px;
+        }
+        @keyframes fadeIn {
+            from {opacity: 0;}
+            to {opacity: 1;}
+        }
+    </style>
+""", unsafe_allow_html=True)
 
 # Tiêu đề
-st.title("💖 Chúc Mừng Quốc Tế Phụ Nữ 💖")
+st.markdown('<div class="cute-text">🌙 Good Night 🌙</div>', unsafe_allow_html=True)
+st.write("")
 
-# Hiển thị hình ảnh
-col1, col2 = st.columns(2)
-with col1:
-    st.image(chicken_img, caption="Một bé gà dễ thương dành tặng chị! 🐥", use_container_width=True)
-with col2:
-    st.image(flower_img, caption="Và một bó hoa xinh đẹp! 🌸", use_container_width=True)
+# Danh sách các câu sẽ hiện ra lần lượt
+messages = ["Nói chứ..", "Ngủ sớm đi mẹeee", "Chúc ngủ ngon :3"]
 
-# Lời chúc
-st.write(
-    "### 💌 Gửi đến hai thân yêu 💌"
-)
-st.write(
-    "Nhân ngày 8/3, em chúc chị thật vui vẻ, hạnh phúc và luôn rạng rỡ như những bông hoa 💐"
-)
+# Hiển thị từng dòng sau mỗi 2 giây
+for msg in messages:
+    time.sleep(2)
+    st.markdown(f'<div class="cute-text">{msg}</div>', unsafe_allow_html=True)
 
-st.write(
-    "Cảm ơn Nọc đã lun bên cạnh, lắng nghe, giúp đỡ và hiểu pn hơn cả pn tự hiểu mình 🥰 Người đâu vừa giỏi, vừa tốt bụng mà còn dễ huông nựa. Wish you all the bestttt, enjoy life 💖🌸✨"
-)
-
-# Hiệu ứng động
-st.balloons()
+# Hiển thị hình ảnh dễ thương sau cùng
+time.sleep(1)
+st.markdown("""
+    <div class="image-container">
+        <img src="https://i.pinimg.com/originals/3c/0c/34/3c0c340509ab0c7ef1c799e0a388e645.gif" alt="Cute cat saying good night">
+    </div>
+""", unsafe_allow_html=True)
