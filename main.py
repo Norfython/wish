@@ -38,7 +38,7 @@ messages = ["Nói chớ..", "Ngủ sớm đi mẹeee", "Chúc ngủ ngon :3"]
 for i, msg in enumerate(messages):
     time.sleep(1)
 
-    color = cute_colors[i % len(cute_colors) + 1] 
+    color = cute_colors[i % len(cute_colors)] 
 
     st.markdown(
         f"""
@@ -54,6 +54,7 @@ for i, msg in enumerate(messages):
         unsafe_allow_html=True
     )
 
-# Hiển thị hình ảnh
 time.sleep(1)
-st.image("cat-sleep.gif")
+col1, col2, col3 = st.columns([1, 2, 1])
+with col2:
+    st.image("cat-sleep.gif")
