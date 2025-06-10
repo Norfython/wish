@@ -1,6 +1,7 @@
 import streamlit as st
 import time
 import random
+import base64
 
 st.set_page_config(page_title="Code thâu đêm", page_icon="🌙", layout="centered")
 
@@ -55,12 +56,13 @@ for i, msg in enumerate(messages):
     )
 
 time.sleep(1)
-with open("cat-sleep.gif", "rb") as file:
-    img_bytes = file.read()
+with open("cat-sleep.gif", "rb") as image_file:
+    encoded = base64.b64encode(image_file.read()).decode("utf-8")
 
+# Hiển thị ảnh được căn giữa bằng HTML
 st.markdown(f"""
     <div style="text-align:center;">
-        <img src="data:image/gif;base64,{img_bytes.encode('base64').decode()}"
+        <img src="data:image/gif;base64,{encoded}"
              alt="Cute cat" width="300"
              style="border-radius:15px; box-shadow:0 0 15px pink;">
     </div>
