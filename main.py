@@ -55,6 +55,13 @@ for i, msg in enumerate(messages):
     )
 
 time.sleep(1)
-col1, col2, col3 = st.columns([1, 2, 1])
-with col2:
-    st.image("cat-sleep.gif")
+with open("cat-sleep.gif", "rb") as file:
+    img_bytes = file.read()
+
+st.markdown(f"""
+    <div style="text-align:center;">
+        <img src="data:image/gif;base64,{img_bytes.encode('base64').decode()}"
+             alt="Cute cat" width="300"
+             style="border-radius:15px; box-shadow:0 0 15px pink;">
+    </div>
+""", unsafe_allow_html=True)
