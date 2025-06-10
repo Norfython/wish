@@ -2,13 +2,10 @@ import streamlit as st
 import time
 import random
 
-# Thiết lập trang
-st.set_page_config(page_title="Chúc ngủ ngon mẹ", page_icon="🌙", layout="centered")
+st.set_page_config(page_title="Code thâu đêm", page_icon="🌙", layout="centered")
 
-# Màu sắc dễ thương cho từng dòng
-cute_colors = ['#ff69b4', '#9370DB', '#00BFFF', '#FF6347', '#32CD32', '#FFD700']
+cute_colors = ['#DDA0DD', '#FFB6C1', '#B0E0E6', '#E6E6FA', '#F08080', '#87CEFA']
 
-# CSS cho body và tiêu đề
 st.markdown("""
     <style>
         body {
@@ -33,20 +30,15 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-# Tiêu đề
 st.markdown('<div class="title-text">🌙 Thâu đêm để code 🌙</div>', unsafe_allow_html=True)
 st.write("")
 
-# Danh sách các câu sẽ hiện ra lần lượt
 messages = ["Nói chớ..", "Ngủ sớm đi mẹeee", "Chúc ngủ ngon :3"]
 
-# Hiển thị từng dòng với màu riêng
 for i, msg in enumerate(messages):
     time.sleep(1)
 
-    color = cute_colors[i % len(cute_colors)]  # Dùng màu theo thứ tự
-    # Hoặc nếu muốn ngẫu nhiên:
-    # color = random.choice(cute_colors)
+    color = cute_colors[i % len(cute_colors) + 1] 
 
     st.markdown(
         f"""
@@ -64,8 +56,4 @@ for i, msg in enumerate(messages):
 
 # Hiển thị hình ảnh
 time.sleep(1)
-st.markdown("""
-    <div class="image-container">
-        <img src="cat-sleep.gif" alt="Cute cat saying good night">
-    </div>
-""", unsafe_allow_html=True)
+st.image("cat-sleep.gif")
